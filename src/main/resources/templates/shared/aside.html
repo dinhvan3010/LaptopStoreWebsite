@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<div class="sidebar">
+
+	<form action="/product/search" >
+		<div class="sidebar_section">
+			<div class="sidebar_title">
+				<h5>Filter by Name</h5>
+			</div>
+			<input name="keywords"  placeholder="Search ...">
+			<div class="filter_button">
+				<button>
+					<span>filter</span>
+				</button>
+			</div>
+		</div>
+	</form>
+	<div class="sidebar_section">
+		<div class="sidebar_title">
+			<h5>Product Category</h5>
+		</div>
+		<ul class="sidebar_categories sidebar_categories--active">
+			<th:block th:each="c:${categories}">
+				<li><a th:text="${c.name}" th:href="@{|/product/list/${c.id}|}"></a></li>
+			</th:block>
+		</ul>
+
+	</div>
+	<form action="/product/price" >
+		<div class="sidebar_section">
+			<div class="sidebar_title">
+				<h5>Filter by Price</h5>
+			</div>
+			<input type="number" name="min" placeholder="From..." required/>
+			<input type="number" name="max" placeholder="To..."  required/>
+			<div class="filter_button">
+				<button>
+					<span>filter</span>
+				</button>
+			</div>
+		</div>
+	</form>
+
+</div>
+
+</html>

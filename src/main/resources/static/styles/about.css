@@ -1,0 +1,12 @@
+
+.content{
+	font-size: 20px;
+}
+.content span{
+	font-size: 30px;
+	text-decoration: bold;
+}
+.content label a{
+	text-transform: uppercase;
+	font-size:25px;
+}

@@ -1,0 +1,26 @@
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+	google.charts.load("current", {packages:['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		$.getJSON("/api/admin/report/revenue-by-vip").then(resp => {
+			var data = resp.map(r => [r.group, r.sum]);
+			data.unshift(['Customer', 'Revenue'])
+			console.log(data);
+			var data = google.visualization.arrayToDataTable(data);
+			var view = new google.visualization.DataView(data);
+			var options = {
+				title: "TOP 10 KHÁCH HÀNG VIP",
+				width: 1100,
+				height: 600,
+				bar: {groupWidth: "95%"},
+				legend: { position: "none" },
+			};
+			var chart = new google.visualization.ColumnChart(document.getElementById("vip-chart"));
+			chart.draw(view, options);
+		})
+		
+		
+}
+</script>
+	<div id="vip-chart" style="width: 1100px; height: 900px; float:right;"></div>

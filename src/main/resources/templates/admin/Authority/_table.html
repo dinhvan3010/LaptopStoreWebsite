@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+ <section class="panel important">
+<table >
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Role</th>
+			<th>role id</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="u: ${list}">
+			<td th:text="${u.id}"></td>
+			<td th:text="${u.account.username}"></td>
+			<td th:text="${u.role.name}"></td>
+			<td th:text="${u.role.id}"></td>
+			<td><a th:href="@{|/admin/authority/edit/${u.id}|}"><i class='fa fa-edit' style='color: blue ; font-size:24px'></i></a> | <a
+				th:href="@{|/admin/authority/delete/${u.id}|}"><i class='fa fa-remove' style='color: red ; font-size:24px'></i></a></td>
+		</tr>
+	</tbody>
+</table>
+</section>
+
+</html>

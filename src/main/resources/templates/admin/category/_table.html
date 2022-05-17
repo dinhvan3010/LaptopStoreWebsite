@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<section class="panel important">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Name VN</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="e: ${list}">
+				<td th:text="${e.id}"></td>
+				<td th:text="${e.name}"></td>
+				<td th:text="${e.nameVn}"></td>
+				<td><a th:href="@{|/admin/category/edit/${e.id}|}"><i
+						class='fa fa-edit' style='color: blue; font-size: 24px'></i></a> | <a
+					th:href="@{|/admin/category/delete/${e.id}|}"><i
+						class='fa fa-remove' style='color: red; font-size: 24px'></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+</html>

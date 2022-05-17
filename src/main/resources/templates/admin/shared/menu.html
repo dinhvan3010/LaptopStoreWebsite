@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="menu-btn">
+	<i class="fa fa-bars"></i>
+</div>
+<div class="side-bar">
+	<div class="menu">
+		<div class="item">
+			<a th:text="${'Xin chào,  ' + #request.remoteUser} "></a>
+		</div>
+		<div class="item">
+			<a class="sub-btn"><i class="fa fa-database"></i>Quản lý dữ liệu<i class="fa fa-angle-right dropdown"></i></a>
+			<div class="sub">
+				<a href="/admin/category" class="sub-item">Loại hàng</a>
+				<a href="/admin/product" class="sub-item">Sản phẩm</a>
+				<a href="/admin/customer" class="sub-item">Khách hàng</a>
+				<a href="/admin/order" class="sub-item">Đơn hàng</a>
+			</div>
+		</div>
+		<div class="item">
+			<a class="sub-btn"><i class="fas fa-chart-column"></i>Thống kê<i class="fa fa-angle-right dropdown"></i></a>
+			<div class="sub">
+				<a href="/admin/report/inventory" class="sub-item">Hàng tồn</a>
+				<a href="/admin/report/revenue-by-category" class="sub-item">Doanh thu theo loại</a>
+				<a href="/admin/report/revenue-by-year" class="sub-item">Doanh thu theo năm</a>
+				<a href="/admin/report/revenue-by-vip" class="sub-item">Khách hàng VIP</a>
+			</div>
+		</div>
+		<div class="item">
+			<a href="/admin/master"><i class="fa fa-user"></i>Quản trị viên</a>
+		</div>
+		<div class="item">
+			<a href="/admin/authority"><i class="fa fa-edit"></i>Phân quyền</a>
+		</div>
+		<div class="item">
+			<a href="/security/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Đăng xuất</a>
+		</div>
+		<div class="overlay"></div>
+	</div>
+</div>
+
+</html>

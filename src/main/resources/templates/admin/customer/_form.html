@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<section class="panel important">
+<form th:action="@{/admin/customer}" th:object="${item}" method="post" enctype="multipart/form-data" class="login100-form validate-form" >
+<h3 style="color:red" th:text="${message}">message</h3>
+<div class="twothirds">
+
+      <div class="wrap-input100 validate-input" data-validate="Username is required">
+    <label>Username:</label>
+    <input th:field="*{username}" type="text" name="username"  class="input100" >
+	 <span class="focus-input100"></span> 
+    <span class="symbol-input100"></span>
+    </div>
+    
+    <div class="wrap-input100 validate-input" data-validate="Password is required">
+    <label>Password:</label>
+    <input name="newpass" th:value="*{password}" type="password" class="input100" />
+    <input th:field="*{password}" type="hidden"/>
+      </div>
+    
+    <div class="wrap-input100 validate-input" data-validate="Fullname is required">
+    <label>FullName:</label>
+    <input th:field="*{fullname}" type="text" name="fullname" class=input100/>
+      </div>
+    
+    <div class="wrap-input100 validate-input" data-validate="Address is required">
+    <label>Address:</label>
+    <input th:field="*{address}" type="text" name="address" class=input100/>
+      </div>
+    
+    <div class="wrap-input100 validate-input" data-validate="Valid Mobile is required : 84********(10 numbers)">
+    <label>Mobile:</label>
+    <input th:field="*{mobile}" type="text" name="mobile" class=input100/>
+     </div>
+    
+    </div>
+    
+     <div class="onethird">
+     
+     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+    <label>Email Address:</label>
+    <input th:field="*{email}" type="text" name="email"  class="input100"/>
+      </div>
+    
+    <label>Photo:</label>
+    <input th:field="*{photo}" type="hidden"/>
+    <input name="photo_file" type="file"/>
+    
+    <label>Activated?:</label>
+    <input th:field="*{activated}" type="radio" th:value="true"/>Yes
+    <input th:field="*{activated}" type="radio" th:value="false"/>No
+    <hr>
+   <input formaction="/admin/customer/create" type="submit" value="Create" />
+    <input formaction="/admin/customer/update" type="submit" value="Update" />
+    <a id = "button"  href="/admin/customer/index">Reset</a>
+    </div>
+</form>
+</section>
+	<script>
+
+
+	</script>
+</html>

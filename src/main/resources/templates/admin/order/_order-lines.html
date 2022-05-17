@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<div>
+    <table >
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Unit Price</th>
+				<th>Discount</th>
+				<th>Quantity</th>
+				<th>Amount</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="d: ${item.orderDetails}">
+				<td th:text="${d.product.id}">id</td>
+				<td th:text="${d.product.name}">name</td>
+				<td th:text="${d.unitPrice}">price</td>
+				<td th:text="${d.discount}">discount</td>
+				<td th:text="${d.quantity}">quantity</td>
+				<td th:text="${d.quantity * d.unitPrice * (1 - d.discount)}">amount</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</html>

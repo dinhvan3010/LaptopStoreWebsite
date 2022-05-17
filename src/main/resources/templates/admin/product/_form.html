@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<section class="panel important">
+	<h3 style="color:red" th:text="${message}">message</h3>
+	<form th:object="${item}" method="post" enctype="multipart/form-data"  class="login100-form validate-form">
+		<div class="twothirds">
+    <label>Id:</label>
+    <input th:field="*{id}" readonly placeholder="Auto Number">
+	
+	<div class="wrap-input100 validate-input" data-validate="Name Product is required">
+    <label>Name:</label>
+    <input th:field="*{name}" class="input100">
+	</div>
+	
+	
+    <label>Image:</label>
+    <input type="file" name="image_file" >
+    <input th:field="*{image}" type="hidden">
+
+
+	<div class="wrap-input100 validate-input" data-validate="Unit Price is required">
+    <label>Unit Price:</label>
+    <input th:field="*{unitPrice}" class="input100">
+ 
+    </div>
+
+	<div class="wrap-input100 validate-input" data-validate="Discount is required">
+    <label>Discount:</label>
+    <input th:field="*{discount}" type="number" min="0" max="1" step="0.05" class="input100">
+    </div>
+
+	<div class="wrap-input100 validate-input" data-validate="Quantity is required">
+    <label>Quantity:</label>
+    <input th:field="*{quantity}" type="number" min="0" class="input100">
+    </div>
+    
+    </div>
+    
+<div class="onethird">
+
+	<div class="wrap-input100 validate-input" data-validate="Product Date is required">
+    <label>Product Date:</label>
+    <input th:field="*{productDate}" class="input100">			
+    </div>
+
+	<div class="wrap-input100 validate-input" data-validate="Like Count is required">
+    <label>Like Count:</label>
+    <input th:field="*{likeCount}" type="number" class="input100">
+    </div>
+
+
+    <label>Category:</label>
+    <select th:field="*{category.id}">
+	    <th:block th:each="c: ${categories}">
+	    	<option th:value="${c.id}" th:text="${c.nameVn}"></option>
+	    </th:block>
+    </select>
+
+    <label>Available?:</label>
+    <input th:field="*{available}" type="radio" th:value="true"/> Yes
+    <input th:field="*{available}" type="radio" th:value="false"/> No
+
+
+    <label>Description:</label>
+    <textarea th:field="*{description}" rows="3"></textarea>
+    	<input formaction="/admin/product/create" type="submit" value="Create"/>
+        <input formaction="/admin/product/update" type="submit" value="Update"/>
+		<a id = "button" href="/admin/product/index">Reset</a>
+</div>
+</form>
+</section>
+<script src="/js/validation-admin-category.js"></script>
+
+</html>

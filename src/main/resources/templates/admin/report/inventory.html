@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/admin/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+	<main role="main">
+	<title>Hàng tồn kho</title>
+		<section class="panel important">
+			<h2>HÀNG TỒN KHO</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Loại</th>
+						<th>Sản phẩm tồn</th>
+						<th>Tổng giá trị</th>
+						<th>Giá thấp nhất</th>
+						<th>Giá cao nhất</th>
+						<th>Giá trung bình</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="e: ${list}">
+						<td th:text="${e.group}"></td>
+						<td th:text="${e.count}"></td>
+						<td>$<span th:text="${#numbers.formatDecimal(e.sum, 0, 2)}"></span></td>
+						<td th:text="${e.min}"></td>
+						<td th:text="${e.max}"></td>
+						<td><span th:text="${#numbers.formatDecimal(e.avg, 0, 2)}"></span></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="chart" th:replace="/admin/report/inventory-chart"></div>
+		</section>
+	</main>
+</div>
+
+
+</html>

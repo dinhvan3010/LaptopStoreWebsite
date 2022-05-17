@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(view)">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/main2.css" />
+</head>
+
+<body>
+	<header th:replace="/admin/shared/header">HEADER</header>
+	<nav th:replace="/admin/shared/menu">MENU</nav>
+    <div class="container-fluid">
+        <article th:insert="${view}">VIEW</article>
+    </div>
+	<footer th:replace="/admin/shared/footer">FOOTER</footer>
+
+	
+<script src="/js/validation-admin-category.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.sub-btn').click(function(){
+				$(this).next('.sub').slideToggle();
+				$(this).find('.dropdown').toggleClass('rotate');
+			});
+		});
+		jQuery(document).ready(function(){
+			$('.menu-btn').click(function() {
+				$('.side-bar').addClass('active');
+			});
+			$('.overlay').click(function() {
+				$('.side-bar').removeClass('active');
+			});
+		});
+	</script>
+	
+</body>
+
+</html>

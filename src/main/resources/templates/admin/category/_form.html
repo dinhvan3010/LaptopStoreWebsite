@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" type="text/css" href="/css/main2.css" />
+<section class="panel important">
+	<form th:object="${item}" method="post" class="login100-form validate-form"
+		onsubmit="return validateForm(this)">
+		<h3 th:text="${message}" style="color: red">message</h3>
+		<div class="twothirds">
+			<label>Id:</label> <input th:field="*{id}" readonly
+				placeholder="Auto Number"> 
+			<div class="wrap-input100 validate-input" data-validate="Name is required">
+			<label>Name:</label> 	
+			<input th:field="*{name}" type="text" class="input100" name="name" >
+			</div>
+			
+			<div class="wrap-input100 validate-input" data-validate="NameVN is required">
+			<label>Name VN:</label> 
+			<input th:field="*{nameVn}" type="text" name="name1" class="input100">
+			</div>
+			
+			<input 
+				formaction="/admin/category/create" type="submit" value="Create" />
+			<input formaction="/admin/category/update" type="submit"
+				value="Update" /> <a id="button" href="/admin/category/index">Reset</a>
+
+		</div>
+	</form>
+
+</section>
+
+</html>

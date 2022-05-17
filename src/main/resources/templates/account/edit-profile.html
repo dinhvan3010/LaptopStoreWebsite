@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+	
+
+<main th:fragment="main">
+<title>Chỉnh sửa thông tin</title>
+<link rel="stylesheet" type="text/css" href="/css/admin2.css" />
+<style>
+.button {
+  background-color: #FE4C50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+   border: 5px solid #FE4C50;
+	padding:10px;
+	border-radius:50%;
+	width: 200px;
+	height: 200px;
+}
+</style>
+<section class="panel important">
+<h2>EDIT PROFILE</h2>
+   <div class="twothirds">
+	<i th:text="${message}">message</i>
+    <form th:object="${user}" action="/account/edit-profile/update" 
+    	method="post" enctype="multipart/form-data">
+        <input th:field="*{photo}" type="hidden">
+         <img  th:src="@{|/images/photos/*{photo}|}">
+        <input name="photo_file" type="file">
+       
+
+        <label>Username:</label>
+        <input th:field="*{username}" readonly>
+        
+        <label>Full Name:</label>
+        <input th:field="*{fullname}" required>
+        
+        <label>Address:</label>
+        <input th:field="*{address}"required>
+        
+        <label>Mobile:</label>
+        <input th:field="*{mobile}" type="number" required>
+        
+        <label>Email Address:</label>
+        <input th:field="*{email}"required>
+        
+        <input th:field="*{activated}" type="hidden">
+        <input th:field="*{password}" type="hidden">
+        <hr>
+             
+        <button class="button">Update Profile</button>
+      
+    </form>
+</div>
+    </section>
+</main>
+
+</html>

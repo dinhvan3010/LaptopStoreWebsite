@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <section class="panel important">
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Customer</th>
+      <th>Mobile</th>
+      <th>Shipping Address</th>
+      <th>Order Date</th>
+      <th>Amount</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="e: ${list}">
+      <td th:text="${e.id}"></td>
+      <td th:text="${e.account.username}"></td>
+      <td th:text="${e.mobile}"></td>
+      <td th:text="${e.address}"></td>
+      <td th:text="${e.orderDate}"></td>
+      <td th:text="${e.amount}"></td>
+      <td>
+      	<a th:href="@{|/admin/order/edit/${e.id}|}"><i class='fa fa-edit' style='color: blue ; font-size:24px'></i></a> 
+      	<a th:href="@{|/admin/order/delete/${e.id}|}"><i class='fa fa-remove' style='color: red ; font-size:24px'></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</section>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+
+<main th:fragment="main">
+<title>Sản phẩm</title>
+	<div class="products_iso">
+			<div class="col">
+				<div class="product_sorting_container product_sorting_container_top">
+					<ul class="product_sorting">
+						<li><span class="type_sorting_text">Default Sorting</span> <i
+							class="fa fa-angle-down"></i>
+							<ul class="sorting_type">
+								<li class="type_sorting_btn"
+									data-isotope-option='{ "sortBy": "original-order" }'><span>Default
+										Sorting</span></li>
+								<li class="type_sorting_btn"
+									data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
+								<li class="type_sorting_btn"
+									data-isotope-option='{ "sortBy": "name" }'><span>Product
+										Name</span></li>
+							</ul></li>
+						<li><span>Show</span> <span class="num_sorting_text">6</span>
+							<i class="fa fa-angle-down"></i>
+							<ul class="sorting_num">
+								<li class="num_sorting_btn"><span>6</span></li>
+								<li class="num_sorting_btn"><span>12</span></li>
+								<li class="num_sorting_btn"><span>24</span></li>
+							</ul></li>
+							<li><span ><a style="color:#212529;" th:href="@{|/product/sale|}">Đang sale</a></span></span>
+							<li><span><a style="color:#212529;" th:href="@{|/product/new|}">Hàng Mới</a></span></span>
+					</ul>
+				</div>
+
+				<!-- Product Grid -->
+
+				<div class="product-grid">
+					<div class="product-item men" th:each="p: ${items}">
+						<div class="product discount product_filter">
+							<div class="product_image">
+								<a th:href="@{|/product/detail/${p.id}|}">
+								 <img th:src="@{|/images/items/${p.image}|}" style="min-height: 200px">
+								</a>
+							</div>
+							<div class="favorite favorite_left"></div>
+							<div
+								class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
+								<span th:text="${p.discount*100 + '%'}"></span>
+							</div>
+							<div class="product_info">
+								<h6 class="product_name" th:text="${p.name}"></h6>
+								<div class="product_price" th:text="${p.unitPrice}"></div>
+							</div>
+						</div>
+						<div class="red_button add_to_cart_button">
+							<a th:id=${p.id} class="cart-add">add to cart</a>
+						</div>
+					</div>					
+				</div>
+			</div>
+			
+	
+</main>
+
+</html>

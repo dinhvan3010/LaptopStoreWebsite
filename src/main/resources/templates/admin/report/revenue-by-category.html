@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/admin/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+	<main role="main">
+	<title>Doanh thu theo loại</title>
+		<section class="panel important">
+			<h2>DOANH THU THEO LOẠi</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Loại</th>
+						<th>Số lượng bán</th>
+						<th>Doanh Thu</th>
+						<th>giá thấp nhất</th>
+						<th>Giá cao nhất</th>
+						<th>Giá trung bình</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="e: ${list}">
+						<td th:text="${e.group}"></td>						
+						<td th:text="${e.count}"></td>
+						<td><span th:text="${#numbers.formatDecimal(e.sum, 0, 2)}"></span></td>
+						<td th:text="${e.min}"></td>
+						<td th:text="${e.max}"></td>
+						<td><span th:text="${#numbers.formatDecimal(e.avg, 0, 2)}"></span></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</section>
+		<section class="panel important">
+		<div class="chart" th:replace="/admin/report/revenue-by-category-chart"></div>
+		</section>
+		
+	</main>
+</div>
+
+
+</html>

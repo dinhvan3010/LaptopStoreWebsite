@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<section class="panel important">
+<h3 style="color:red" th:text="${message}">message</h3>
+<form th:object="${item}" method="post" class="login100-form validate-form">
+<div class="twothirds">
+    <label>Id:</label>
+    <input th:field="*{id}" readonly placeholder="Auto Number">
+    
+     <div class="wrap-input100 validate-input" data-validate="Customer is required">
+    <label>Customer:</label>
+    <input th:field="*{account.username}" class="input100">
+    </div>
+ 
+    
+     <div class="wrap-input100 validate-input" data-validate="Order Date is required">
+    <label>Order Date:</label>
+    <input th:field="*{orderDate}" class="input100">
+    </div>
+    
+     <div class="wrap-input100 validate-input" data-validate="Amount is required">
+    <label>Amount:</label>
+    <input th:value="${amount}" class="input100">
+    </div>
+    
+    <label>Status:</label>
+    <select th:field="*{statusId}">
+    <th:block th:each="e: ${statuses}">
+    	<option th:value="${e.key}" th:text="${e.value}"/>
+    </th:block>
+    </select>
+    
+    <th:block th:if="*{orderDetails != null}">
+    	<hr>ORDER LINES:
+    	<div th:replace="/admin/order/_order-lines"></div>
+    </th:block>
+    </div>
+    
+      <div class="onethird">
+      
+       <div class="wrap-input100 validate-input" data-validate="Recipient is required">
+     <label>Recipient:</label>
+    <input th:field="*{recipient}" class="input100">
+     <span class="focus-input100"></span> 
+    <span class="symbol-input100"></span>
+    </div>
+    
+     <div class="wrap-input100 validate-input" data-validate="Shipping Address is required">
+    <label>Shipping Address:</label>
+    <input th:field="*{address}" class="input100">
+    </div>
+    
+     <div class="wrap-input100 validate-input" data-validate="Mobile is required">
+    <label>Mobile:</label>
+    <input th:field="*{mobile}" class="input100">
+    </div>
+    
+    <label>Notes:</label>
+    <textarea th:field="*{notes}" rows="3"></textarea>
+    
+
+    <input formaction="/admin/order/create" type="submit" value="Create" />
+    <input formaction="/admin/order/update" type="submit" value="Update" />
+    <a id = "button" th:href="@{|/admin/order/delete/*{id}|}">Delete</a>
+    <a id = "button"  href="/admin/order/index">Reset</a>
+    </div>
+</form>
+
+</section>
+
+</html>

@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="/shared/layout::dynamic(~{::view})">
+	
+<div th:fragment="view">
+<link rel="stylesheet" type="text/css" href="/css/admin2.css">
+	<section class="panel important">
+	<div style="overflow-x:auto;">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Date</th>
+				<th>Amount</th>
+				<th>Address</th>
+				<th>Status</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="o: ${orders}">
+				<td th:text="${o.id}">id</td>
+				<td th:text="${o.orderDate}">date</td>
+				<td th:text="${o.amount}">amount</td>
+				<td th:text="${o.address}">address</td>
+				<td th:text="${statuses.get(o.statusId)}">status</td>
+				<td>
+					<a th:href="@{|/order/detail/${o.id}|}"><i class="fa fa-edit" aria-hidden="true" style='font-size:24px'></i></a>
+					<a th:if="${o.statusId == 0}" th:href="@{|/order/cancel/${o.id}|}"><i class="fa fa-times" aria-hidden="true"  style='font-size:24px;color:red'></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	</section>
+</div>
+
+</html>

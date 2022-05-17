@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+
+
+<div th:fragment="view">
+<title>Giỏ hàng</title>
+<link rel="stylesheet" type="text/css" href="/css/admin2.css">
+<section class="panel important">
+<div style="overflow-x:auto;">
+	<table>
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>Name</td>
+					<td>Image</td>
+					<td>UnitPrice</td>
+					<td>Discount</td>
+					<td>Quantity</td>
+					<td>Amount</td>
+					<td></td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="p:${cart.items}">
+					<tr>
+						<td th:text="${p.id}">ID</td>
+						<td th:text="${p.name}">Name</td>
+						<td><img th:src="@{|/images/items/${p.image}}"style='height: 100px' alt=""></td>
+						<td th:text="${p.unitPrice}">UnitPrice</td>
+						<td th:text="${p.discount}">Discount</td>
+						<td><input
+							th:attr="id=${p.id}, data-price=${p.unitPrice}, data-disc=${p.discount}"
+							class="cart-update" th:value="${p.quantity}" type="number"
+							min="1"></td>
+						<td class="amount" th:text="${p.quantity*p.unitPrice*(1-p.discount)}" >Amount</td>
+						<td>
+							<td><a th:id="${p.id}" class="cart-remove"><i 
+						class="fa fa-trash "  style='font-size:24px' aria-hidden="true"></i></a></td>
+
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+	<div class="btns">
+		<button class="cart-clear" id="button">Clear</button>
+		<a class="ck-btn" id="button" href="/order/checkout">Checkout</a>
+	</div>
+	
+</section>	
+</div>
+
+
+
+</html>

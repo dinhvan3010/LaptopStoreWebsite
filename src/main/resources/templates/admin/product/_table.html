@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<style>
+.search-box{
+  width: 100%;
+  position: relative;
+  display: flex;
+
+}
+.search-input{
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius:10px 0 0 10px ;
+  border-right: none;
+  outline: none;
+  font-size: 20px;
+  color: tomato;
+  background: none;
+}
+.search-button{
+ text-align: center;
+height: 51px;
+width: 40px;
+outline: none;
+cursor: pointer;
+border: 2px solid black;
+border-radius: 0 10px 10px 0 ;
+background: none;
+font-size: 20px;
+border-left: 2px solid black;
+}
+.search{
+  	max-width: 35%;
+	margin-left: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+
+}
+</style>
+ <section class="panel important">
+
+ <div style="overflow-x:auto;">
+  <form th:action="@{/search}" class="search">
+	<div class="search-box">
+     <input type="text" name="keyword" class="search-input"  th:value="${keyword}" placeholder="Nhập tên sản phẩm cần tìm" required />
+   	<button class="search-button">
+        <i class="fas fa-search"></i>    
+      </button>
+    </div>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Unit Price</th>
+      <th>Discount</th>
+      <th>Quantity</th>
+      <th>Date</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="e: ${list}">
+      <td th:text="${e.id}"></td>
+      <td th:text="${e.name}"></td>
+      <td><img th:src="@{|/images/items/${e.image}|}" height="50px" width="50px" alt=""></td>
+      <td th:text="${e.unitPrice}"></td>
+      <td th:text="${e.discount}"></td>
+      <td th:text="${e.quantity}"></td>
+      <td th:text="${e.productDate}"></td>
+      <td th:text="${e.category.nameVn}"></td>
+      <td>
+      	<a th:href="@{|/admin/product/edit/${e.id}|}"><i class='fa fa-edit' style='color: blue ; font-size:24px'></i></a> 
+      	<a th:href="@{|/admin/product/delete/${e.id}|}"><i class='fa fa-remove' style='color: red ; font-size:24px'></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+</html>

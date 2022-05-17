@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/admin/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+	<main role="main">
+	<title>Quản lý sản phẩm</title>
+		<h3 th:text="${message}"style:"color:red">message</h3>
+		<div th:replace="/admin/product/_form"></div>
+		<hr>
+		<div th:replace="/admin/product/_table"></div>
+	</main>
+</div>
+</html>

@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+<title>Chi tiết sản phẩm</title>
+	<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css" />
+	<link rel="stylesheet" type="text/css" href="/styles/single_styles.css" />
+	<link rel="stylesheet" type="text/css"
+		href="/styles/single_responsive.css" />
+	<style>
+.cart-add {
+	background-color: #f44336; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}p.with-breaks{
+	white-space: pre-wrap;
+}
+</style>
+
+	<br>
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="single_product_pics">
+				<div class="row">
+					<div class="col-lg-12 image_col order-lg-2 order-1">
+						<div class="single_product_image">
+							<div class="single_product_image_background">
+								<img th:src="@{|/images/items/${item.image}|}  " width="400"
+									height="400">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="product_details">
+				<div class="product_details_title">
+					<h2 th:text="${item.name}"></h2></br>
+					
+					<h4>Mô tả sản phẩm</h4>
+					<p class="with-breaks" th:text="${item.description}"></p>
+				</div>
+				<div
+					class="free_delivery d-flex flex-row align-items-center justify-content-center">
+					<span class="ti-truck"></span><span>free delivery</span>
+				</div>
+				<div th:text="${item.unitPrice}" class="original_price"></div>
+				<div  th:text="${#numbers.formatDecimal(item.unitPrice*(1-item.discount), 0, 1)}"
+					class="product_price"></div>
+
+				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">					
+						<a th:id=${item.id} class="cart-add">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</html>
